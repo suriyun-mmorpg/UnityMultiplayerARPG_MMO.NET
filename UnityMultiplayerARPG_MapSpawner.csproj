@@ -8,8 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ConcurrentHashSet" Version="1.3.0" />
     <PackageReference Include="LiteNetLib" Version="1.1.0" />
     <PackageReference Include="LogicLooper" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.5" />
+    <PackageReference Include="MySqlConnector" Version="2.2.5" />
+    <PackageReference Include="NetCoreServer" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="UniTask" Version="2.3.3" />
     <PackageReference Include="ZLogger" Version="1.7.0" />
     <PackageReference Include="ZString" Version="2.5.0" />
