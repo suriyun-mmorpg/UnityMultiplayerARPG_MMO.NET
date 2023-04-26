@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityMultiplayerARPG_MapSpawner", "UnityMultiplayerARPG_MapSpawner.csproj", "{B425A3C1-D742-4585-931B-D87F64DCFEFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B425A3C1-D742-4585-931B-D87F64DCFEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B425A3C1-D742-4585-931B-D87F64DCFEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B425A3C1-D742-4585-931B-D87F64DCFEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B425A3C1-D742-4585-931B-D87F64DCFEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95AD7352-E8FF-458D-A93C-82EF2C580841}
+	EndGlobalSection
+EndGlobal
