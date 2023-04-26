@@ -7,3 +7,4 @@
 [submodule "LiteNetLibManager"]
 	path = LiteNetLibManager
 	url = https://github.com/insthync/LiteNetLibManager.git
+	branch = minimal
