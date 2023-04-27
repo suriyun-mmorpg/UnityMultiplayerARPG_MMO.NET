@@ -14,6 +14,3 @@
 [submodule "CentralServerSource"]
 	path = CentralServerSource
 	url = https://github.com/insthync/UnityMultiplayerARPG_CentralServerSource.git
-[submodule "SharedNetworkMessages"]
-	path = SharedNetworkMessages
-	url = https://github.com/insthync/UnityMultiplayerARPG_SharedNetworkMessages.git
