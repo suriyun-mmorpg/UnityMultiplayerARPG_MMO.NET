@@ -46,9 +46,6 @@ else
     Logging.Log($"Can't find config file: {configFilePath}");
 }
 
-const int targetFps = 60;
-using LogicLooper looper = new LogicLooper(targetFps);
-
 // Prepare server instances
 CentralNetworkManager centralNetworkManager = new CentralNetworkManager();
 MapSpawnNetworkManager mapSpawnNetworkManager = new MapSpawnNetworkManager();
@@ -148,6 +145,11 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_MAPS, out spawnMapIds
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_MAPS] = spawnMapIds;
 
+// Setup process
+const int targetFps = 60;
+using LogicLooper looper = new LogicLooper(targetFps);
+AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+
 // Start central server
 centralNetworkManager.DbServiceClient = new RestDatabaseClient();
 centralNetworkManager.DataManager = new CentralServerDataManager();
@@ -170,8 +172,11 @@ await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
     return true;
 });
 
-if (centralNetworkManager != null)
-    centralNetworkManager.StopServer();
+async void CurrentDomain_ProcessExit(object sender, EventArgs e)
+{
+    if (centralNetworkManager != null)
+        centralNetworkManager.StopServer();
 
-if (mapSpawnNetworkManager != null)
-    mapSpawnNetworkManager.StopServer();
+    if (mapSpawnNetworkManager != null)
+        mapSpawnNetworkManager.StopServer();
+}
