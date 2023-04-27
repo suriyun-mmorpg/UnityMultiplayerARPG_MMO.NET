@@ -1,6 +1,7 @@
 [submodule "SharedData"]
 	path = SharedData
 	url = https://github.com/insthync/UnityMultiplayerARPG_SharedData.git
+	branch = litenetlib
 [submodule "DevExtension"]
 	path = DevExtension
 	url = https://github.com/insthync/unity-dev-extension.git
