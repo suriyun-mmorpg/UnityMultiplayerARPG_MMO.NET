@@ -3,6 +3,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -166,27 +167,22 @@ namespace MultiplayerARPG.MMO
 
         public static async Task<Result> Get(string url, string authorizationToken)
         {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
             Guid id = Guid.NewGuid();
             bool errorLogged = false;
-            Console.WriteLine($"[Info] Get request {id} {url}");
-#endif
+            Debug.WriteLine($"[Info] GET request {id} {url}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
             long responseCode = -1;
-            bool isHttpError = true;
-            bool isNetworkError = true;
+            bool isHttpError = false;
+            bool isNetworkError = false;
             string stringContent = string.Empty;
             string error = string.Empty;
             if (!doNotCountNextRequest)
                 GetLoadCount++;
             using (var webRequest = new HttpRequestMessage(HttpMethod.Get, url))
             {
-                webRequest.Headers.Add("Content-Type", "application/json");
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Info] Get {id} with authorization token {authorizationToken}");
-#endif
+                    Debug.WriteLine($"[Info] GET {id} with authorization token {authorizationToken}");
                     webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
                 }
                 try
@@ -196,23 +192,20 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
+                    isHttpError = resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
-                    error = ex.ToString();
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Error] Get error {id} catched {ex}");
+                    isNetworkError = true;
+                    error = ex.Message;
+                    Debug.WriteLine($"[Error] Cannot GET: {url} {ex.Message} {id}");
                     errorLogged = true;
-#else
-                    Console.WriteLine(ex);
-#endif
+                    Console.WriteLine($"[Error] Cannot GET: {url} {ex.Message}");
                 }
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
                 if ((isHttpError || isNetworkError) && !errorLogged)
-                    Console.WriteLine($"[Error] Get error {id} {stringContent}");
+                    Debug.WriteLine($"[Error] GET Result {id} {stringContent}");
                 else
-                    Console.WriteLine($"[Info] Get success {id} {webRequest.responseCode} {stringContent}");
-#endif
+                    Debug.WriteLine($"[Info] GET Result {id} {responseCode} {stringContent}");
             }
             if (!doNotCountNextRequest)
                 GetLoadCount--;
@@ -222,27 +215,22 @@ namespace MultiplayerARPG.MMO
 
         public static async Task<Result> Delete(string url, string authorizationToken)
         {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
             Guid id = Guid.NewGuid();
             bool errorLogged = false;
-            Console.WriteLine($"[Info] Delete request {id} {url}");
-#endif
+            Debug.WriteLine($"[Info] DELETE request {id} {url}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
             long responseCode = -1;
-            bool isHttpError = true;
-            bool isNetworkError = true;
+            bool isHttpError = false;
+            bool isNetworkError = false;
             string stringContent = string.Empty;
             string error = string.Empty;
             if (!doNotCountNextRequest)
                 DeleteLoadCount++;
             using (var webRequest = new HttpRequestMessage(HttpMethod.Delete, url))
             {
-                webRequest.Headers.Add("Content-Type", "application/json");
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Info] Delete {id} with authorization token {authorizationToken}");
-#endif
+                    Debug.WriteLine($"[Info] DELETE {id} with authorization token {authorizationToken}");
                     webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
                 }
                 try
@@ -252,23 +240,20 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
+                    isHttpError = resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
-                    error = ex.ToString();
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Error] Delete error {id} catched {ex}");
+                    isNetworkError = true;
+                    error = ex.Message;
+                    Debug.WriteLine($"[Error] Cannot DELETE: {url} {ex.Message} {id}");
                     errorLogged = true;
-#else
-                    Console.WriteLine(ex);
-#endif
+                    Console.WriteLine($"[Error] Cannot DELETE: {url} {ex.Message}");
                 }
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
                 if ((isHttpError || isNetworkError) && !errorLogged)
-                    Console.WriteLine($"[Error] Delete error {id} {stringContent}");
+                    Debug.WriteLine($"[Error] DELETE Result {id} {stringContent}");
                 else
-                    Console.WriteLine($"[Info] Delete success {id} {webRequest.responseCode} {stringContent}");
-#endif
+                    Debug.WriteLine($"[Info] DELETE Result {id} {responseCode} {stringContent}");
             }
             if (!doNotCountNextRequest)
                 DeleteLoadCount--;
@@ -288,27 +273,22 @@ namespace MultiplayerARPG.MMO
 
         public static async Task<Result> Post(string url, string data, string authorizationToken)
         {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
             Guid id = Guid.NewGuid();
             bool errorLogged = false;
-            Console.WriteLine($"[Info] Post request {id} {url} {data}");
-#endif
+            Debug.WriteLine($"[Info] POST request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
             long responseCode = -1;
-            bool isHttpError = true;
-            bool isNetworkError = true;
+            bool isHttpError = false;
+            bool isNetworkError = false;
             string stringContent = string.Empty;
             string error = string.Empty;
             if (!doNotCountNextRequest)
                 PostLoadCount++;
             using (var webRequest = new HttpRequestMessage(HttpMethod.Post, url))
             {
-                webRequest.Headers.Add("Content-Type", "application/json");
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Info] Post {id} with authorization token {authorizationToken}");
-#endif
+                    Debug.WriteLine($"[Info] POST {id} with authorization token {authorizationToken}");
                     webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -319,23 +299,20 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
+                    isHttpError = resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
-                    error = ex.ToString();
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Error] Post error {id} catched {ex}");
+                    isNetworkError = true;
+                    error = ex.Message;
+                    Debug.WriteLine($"[Error] Cannot POST: {url} {ex.Message} {id}");
                     errorLogged = true;
-#else
-                    Console.WriteLine(ex);
-#endif
+                    Console.WriteLine($"[Error] Cannot POST: {url} {ex.Message}");
                 }
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
                 if ((isHttpError || isNetworkError) && !errorLogged)
-                    Console.WriteLine($"[Error] Post error {id} {stringContent}");
+                    Debug.WriteLine($"[Error] POST Result {id} {stringContent}");
                 else
-                    Console.WriteLine($"[Info] Post success {id} {webRequest.responseCode} {stringContent}");
-#endif
+                    Debug.WriteLine($"[Info] POST Result {id} {responseCode} {stringContent}");
             }
             if (!doNotCountNextRequest)
                 PostLoadCount--;
@@ -355,27 +332,22 @@ namespace MultiplayerARPG.MMO
 
         public static async Task<Result> Patch(string url, string data, string authorizationToken)
         {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
             Guid id = Guid.NewGuid();
             bool errorLogged = false;
-            Console.WriteLine($"[Info] Patch request {id} {url} {data}");
-#endif
+            Debug.WriteLine($"[Info] PATCH request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
             long responseCode = -1;
-            bool isHttpError = true;
-            bool isNetworkError = true;
+            bool isHttpError = false;
+            bool isNetworkError = false;
             string stringContent = string.Empty;
             string error = string.Empty;
             if (!doNotCountNextRequest)
                 PatchLoadCount++;
             using (var webRequest = new HttpRequestMessage(HttpMethod.Patch, url))
             {
-                webRequest.Headers.Add("Content-Type", "application/json");
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Info] Patch {id} with authorization token {authorizationToken}");
-#endif
+                    Debug.WriteLine($"[Info] PATCH {id} with authorization token {authorizationToken}");
                     webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -386,23 +358,20 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
+                    isHttpError = resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
-                    error = ex.ToString();
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Error] Patch error {id} catched {ex}");
+                    isNetworkError = true;
+                    error = ex.Message;
+                    Debug.WriteLine($"[Error] Cannot PATCH: {url} {ex.Message} {id}");
                     errorLogged = true;
-#else
-                    Console.WriteLine(ex);
-#endif
+                    Console.WriteLine($"[Error] Cannot PATCH: {url} {ex.Message}");
                 }
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
                 if ((isHttpError || isNetworkError) && !errorLogged)
-                    Console.WriteLine($"[Error] Patch error {id} {stringContent}");
+                    Debug.WriteLine($"[Error] PATCH Result {id} {stringContent}");
                 else
-                    Console.WriteLine($"[Info] Patch success {id} {webRequest.responseCode} {stringContent}");
-#endif
+                    Debug.WriteLine($"[Info] PATCH Result {id} {responseCode} {stringContent}");
             }
             if (!doNotCountNextRequest)
                 PatchLoadCount--;
@@ -422,27 +391,22 @@ namespace MultiplayerARPG.MMO
 
         public static async Task<Result> Put(string url, string data, string authorizationToken)
         {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
             Guid id = Guid.NewGuid();
             bool errorLogged = false;
-            Console.WriteLine($"[Info] Put request {id} {url} {data}");
-#endif
+            Debug.WriteLine($"[Info] PUT request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
             long responseCode = -1;
-            bool isHttpError = true;
-            bool isNetworkError = true;
+            bool isHttpError = false;
+            bool isNetworkError = false;
             string stringContent = string.Empty;
             string error = string.Empty;
             if (!doNotCountNextRequest)
                 PutLoadCount++;
             using (var webRequest = new HttpRequestMessage(HttpMethod.Put, url))
             {
-                webRequest.Headers.Add("Content-Type", "application/json");
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Info] Put {id} with authorization token {authorizationToken}");
-#endif
+                    Debug.WriteLine($"[Info] PUT {id} with authorization token {authorizationToken}");
                     webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
@@ -453,23 +417,20 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
+                    isHttpError = resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
-                    error = ex.ToString();
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
-                    Console.WriteLine($"[Error] Put error {id} catched {ex}");
+                    isNetworkError = true;
+                    error = ex.Message;
+                    Debug.WriteLine($"[Error] Cannot PUT: {url} {ex.Message} {id}");
                     errorLogged = true;
-#else
-                    Console.WriteLine(ex);
-#endif
+                    Console.WriteLine($"[Error] Cannot PUT: {url} {ex.Message}");
                 }
-#if DEBUG_REST_CLIENT || UNITY_EDITOR
                 if ((isHttpError || isNetworkError) && !errorLogged)
-                    Console.WriteLine($"[Error] Put error {id} {stringContent}");
+                    Debug.WriteLine($"[Error] PUT Result {id} {stringContent}");
                 else
-                    Console.WriteLine($"[Info] Put success {id} {webRequest.responseCode} {stringContent}");
-#endif
+                    Debug.WriteLine($"[Info] PUT Result {id} {responseCode} {stringContent}");
             }
             if (!doNotCountNextRequest)
                 PutLoadCount--;
