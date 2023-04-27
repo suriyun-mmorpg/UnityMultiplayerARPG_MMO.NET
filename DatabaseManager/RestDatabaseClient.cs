@@ -23,17 +23,19 @@ namespace MultiplayerARPG.MMO
             string configFolder = "./Config";
             string configFilePath = configFolder + "/serverConfig.json";
             Dictionary<string, object> jsonConfig = new Dictionary<string, object>();
-            Logging.Log(nameof(RestDatabaseClient), "Reading config file from " + configFilePath);
             if (File.Exists(configFilePath))
             {
-                // Read config file
-                Logging.Log(nameof(RestDatabaseClient), "Found config file");
+                Logging.Log(nameof(RestDatabaseClient), $"Found config file: {configFilePath}");
                 string dataAsJson = File.ReadAllText(configFilePath);
                 Config newConfig = JsonConvert.DeserializeObject<Config>(dataAsJson);
                 if (newConfig.dbApiUrl != null)
                     apiUrl = newConfig.dbApiUrl;
                 if (newConfig.dbSecretKey != null)
                     secretKey = newConfig.dbSecretKey;
+            }
+            else
+            {
+                Logging.Log(nameof(RestDatabaseClient), $"Can't find config file: {configFilePath}");
             }
         }
 
