@@ -1,0 +1,18 @@
+{
+  "useWebSocket": false,
+  "webSocketSecure": false,
+  "webSocketCertPath": "",
+  "webSocketCertPassword": "",
+  "centralAddress": "127.0.0.1",
+  "centralPort": 7000,
+  "centralMaxConnections": 1100,
+  "clusterPort": 6010,
+  "machineAddress": "127.0.0.1",
+  "mapSpawnPort": 6001,
+  "spawnExePath": "D:/Projects/UnityBuild/MMORPG_KIT/UnityMultiplayerARPG.exe",
+  "notSpawnInBatchMode": true,
+  "spawnStartPort": 8000,
+  "spawnMaps": [ "Map001", "Map002" ],
+  "dbApiUrl": "http://localhost:5757/api/",
+  "dbSecretKey": "secret"
+}
