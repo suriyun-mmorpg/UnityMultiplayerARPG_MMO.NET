@@ -9,9 +9,6 @@
 	path = LiteNetLibManager
 	url = https://github.com/insthync/LiteNetLibManager.git
 	branch = minimal
-[submodule "DatabaseManagerSource"]
-	path = DatabaseManagerSource
-	url = https://github.com/insthync/UnityMultiplayerARPG_DatabaseManagerSource.git
 [submodule "CentralServerSource"]
 	path = CentralServerSource
 	url = https://github.com/insthync/UnityMultiplayerARPG_CentralServerSource.git
