@@ -1,4 +1,6 @@
 {
+  "databaseOptionIndex": 1,
+  "databaseDisableCacheReading": false,
   "useWebSocket": false,
   "webSocketSecure": false,
   "webSocketCertPath": "",
@@ -10,9 +12,14 @@
   "machineAddress": "127.0.0.1",
   "mapSpawnPort": 6001,
   "spawnExePath": "D:/Projects/UnityBuild/MMORPG_KIT/UnityMultiplayerARPG.exe",
-  "notSpawnInBatchMode": true,
+  "notSpawnInBatchMode": false,
   "spawnStartPort": 8000,
-  "spawnMaps": [ "Map001", "Map002" ],
+  "spawnMaps": [ "Map001", "Map002", "Map_GuildWar" ],
+  "mapPort": 7770,
+  "mapMaxConnections": 1100,
+  "databaseManagerAddress": "127.0.0.1",
+  "databaseManagerPort": 6100,
+  "useCustomDatabaseClient": true,
   "dbApiUrl": "http://localhost:5757/api/",
   "dbSecretKey": "secret"
 }
