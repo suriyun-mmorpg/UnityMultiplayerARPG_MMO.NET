@@ -8,12 +8,14 @@ using Newtonsoft.Json;
 string configFolder = "./Config";
 string configFilePath;
 
+bool configFileFound = false;
 Dictionary<string, object> serverConfig = new Dictionary<string, object>();
 List<string> spawningMapIds = new List<string>();
 configFilePath = configFolder + "/serverConfig.json";
 if (File.Exists(configFilePath))
 {
     Logging.Log($"Found config file: {configFilePath}");
+    configFileFound = true;
     string dataAsJson = File.ReadAllText(configFilePath);
     serverConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataAsJson);
 }
@@ -144,6 +146,15 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_MAPS, out spawnMapIds
     spawningMapIds = spawnMapIds;
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_MAPS] = spawnMapIds;
+
+if (!configFileFound)
+{
+    // Write config file
+    Logging.Log("Not found server config file, creating a new one");
+    if (!Directory.Exists(configFolder))
+        Directory.CreateDirectory(configFolder);
+    File.WriteAllText(configFilePath, JsonConvert.SerializeObject(serverConfig, Formatting.Indented));
+}
 
 // Setup process
 const int targetFps = 60;
