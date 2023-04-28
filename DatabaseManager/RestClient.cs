@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MultiplayerARPG.MMO
 {
@@ -172,6 +169,7 @@ namespace MultiplayerARPG.MMO
             bool errorLogged = false;
             Debug.WriteLine($"[Info] GET request {id} {url}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
+            DoNotCountNextRequest = false;
             long responseCode = -1;
             bool isHttpError = false;
             bool isNetworkError = false;
@@ -193,7 +191,7 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
-                    isHttpError = resp.IsSuccessStatusCode;
+                    isHttpError = !resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -210,7 +208,6 @@ namespace MultiplayerARPG.MMO
             }
             if (!doNotCountNextRequest)
                 GetLoadCount--;
-            DoNotCountNextRequest = false;
             return new Result(responseCode, isHttpError, isNetworkError, stringContent, error);
         }
 
@@ -220,6 +217,7 @@ namespace MultiplayerARPG.MMO
             bool errorLogged = false;
             Debug.WriteLine($"[Info] DELETE request {id} {url}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
+            DoNotCountNextRequest = false;
             long responseCode = -1;
             bool isHttpError = false;
             bool isNetworkError = false;
@@ -241,7 +239,7 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
-                    isHttpError = resp.IsSuccessStatusCode;
+                    isHttpError = !resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -258,7 +256,6 @@ namespace MultiplayerARPG.MMO
             }
             if (!doNotCountNextRequest)
                 DeleteLoadCount--;
-            DoNotCountNextRequest = false;
             return new Result(responseCode, isHttpError, isNetworkError, stringContent, error);
         }
 
@@ -278,6 +275,7 @@ namespace MultiplayerARPG.MMO
             bool errorLogged = false;
             Debug.WriteLine($"[Info] POST request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
+            DoNotCountNextRequest = false;
             long responseCode = -1;
             bool isHttpError = false;
             bool isNetworkError = false;
@@ -300,7 +298,7 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
-                    isHttpError = resp.IsSuccessStatusCode;
+                    isHttpError = !resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -317,7 +315,6 @@ namespace MultiplayerARPG.MMO
             }
             if (!doNotCountNextRequest)
                 PostLoadCount--;
-            DoNotCountNextRequest = false;
             return new Result(responseCode, isHttpError, isNetworkError, stringContent, error);
         }
 
@@ -337,6 +334,7 @@ namespace MultiplayerARPG.MMO
             bool errorLogged = false;
             Debug.WriteLine($"[Info] PATCH request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
+            DoNotCountNextRequest = false;
             long responseCode = -1;
             bool isHttpError = false;
             bool isNetworkError = false;
@@ -359,7 +357,7 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
-                    isHttpError = resp.IsSuccessStatusCode;
+                    isHttpError = !resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -376,7 +374,6 @@ namespace MultiplayerARPG.MMO
             }
             if (!doNotCountNextRequest)
                 PatchLoadCount--;
-            DoNotCountNextRequest = false;
             return new Result(responseCode, isHttpError, isNetworkError, stringContent, error);
         }
 
@@ -396,6 +393,7 @@ namespace MultiplayerARPG.MMO
             bool errorLogged = false;
             Debug.WriteLine($"[Info] PUT request {id} {url} {data}");
             bool doNotCountNextRequest = DoNotCountNextRequest;
+            DoNotCountNextRequest = false;
             long responseCode = -1;
             bool isHttpError = false;
             bool isNetworkError = false;
@@ -418,7 +416,7 @@ namespace MultiplayerARPG.MMO
                         responseCode = (long)resp.StatusCode;
                         stringContent = await resp.Content.ReadAsStringAsync();
                     }
-                    isHttpError = resp.IsSuccessStatusCode;
+                    isHttpError = !resp.IsSuccessStatusCode;
                 }
                 catch (Exception ex)
                 {
@@ -435,7 +433,6 @@ namespace MultiplayerARPG.MMO
             }
             if (!doNotCountNextRequest)
                 PutLoadCount--;
-            DoNotCountNextRequest = false;
             return new Result(responseCode, isHttpError, isNetworkError, stringContent, error);
         }
 
