@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -183,7 +184,7 @@ namespace MultiplayerARPG.MMO
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
                     Debug.WriteLine($"[Info] GET {id} with authorization token {authorizationToken}");
-                    webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
+                    webRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
                 }
                 try
                 {
@@ -231,7 +232,7 @@ namespace MultiplayerARPG.MMO
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
                     Debug.WriteLine($"[Info] DELETE {id} with authorization token {authorizationToken}");
-                    webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
+                    webRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
                 }
                 try
                 {
@@ -289,7 +290,7 @@ namespace MultiplayerARPG.MMO
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
                     Debug.WriteLine($"[Info] POST {id} with authorization token {authorizationToken}");
-                    webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
+                    webRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
                 try
@@ -348,7 +349,7 @@ namespace MultiplayerARPG.MMO
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
                     Debug.WriteLine($"[Info] PATCH {id} with authorization token {authorizationToken}");
-                    webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
+                    webRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
                 try
@@ -407,7 +408,7 @@ namespace MultiplayerARPG.MMO
                 if (!string.IsNullOrEmpty(authorizationToken))
                 {
                     Debug.WriteLine($"[Info] PUT {id} with authorization token {authorizationToken}");
-                    webRequest.Headers.Add("Authorization", "Bearer " + authorizationToken);
+                    webRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
                 }
                 webRequest.Content = new StringContent(data, Encoding.UTF8, "application/json");
                 try
