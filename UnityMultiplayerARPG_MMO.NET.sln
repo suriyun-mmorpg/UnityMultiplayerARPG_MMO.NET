@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityMultiplayerARPG_CentralServer", "UnityMultiplayerARPG_CentralServer.csproj", "{B425A3C1-D742-4585-931B-D87F64DCFEFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityMultiplayerARPG_MMO.NET", "UnityMultiplayerARPG_MMO.NET.csproj", "{B425A3C1-D742-4585-931B-D87F64DCFEFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
