@@ -19,7 +19,7 @@
   "mapMaxConnections": 1100,
   "databaseManagerAddress": "127.0.0.1",
   "databaseManagerPort": 6100,
-  "useCustomDatabaseClient": true,
+  "useCustomDatabaseClient": false,
   "dbApiUrl": "http://localhost:5757/api/",
   "dbSecretKey": "secret"
 }

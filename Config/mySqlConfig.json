@@ -1,0 +1,8 @@
+{
+  "mySqlAddress": "127.0.0.1",
+  "mySqlPort": 3306,
+  "mySqlUsername": "root",
+  "mySqlPassword": "",
+  "mySqlDbName": "mmorpg_kit",
+  "mySqlConnectionString": ""
+}
