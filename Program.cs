@@ -48,7 +48,24 @@ else
     Logging.Log($"Can't find config file: {configFilePath}");
 }
 
+configFilePath = configFolder + "/socialSystemSetting.json";
+if (File.Exists(configFilePath))
+{
+    Logging.Log($"Found config file: {configFilePath}");
+    string dataAsJson = File.ReadAllText(configFilePath);
+    SocialSystemSetting replacingConfig = JsonConvert.DeserializeObject<SocialSystemSetting>(dataAsJson);
+    if (replacingConfig.GuildMemberRoles != null)
+        DatabaseNetworkManager.GuildMemberRoles = replacingConfig.GuildMemberRoles;
+    if (replacingConfig.GuildExpTree != null)
+        DatabaseNetworkManager.GuildExpTree = replacingConfig.GuildExpTree;
+}
+else
+{
+    Logging.Log($"Can't find config file: {configFilePath}");
+}
+
 // Prepare server instances
+DatabaseNetworkManager databaseNetworkManager = new DatabaseNetworkManager();
 CentralNetworkManager centralNetworkManager = new CentralNetworkManager();
 MapSpawnNetworkManager mapSpawnNetworkManager = new MapSpawnNetworkManager();
 
