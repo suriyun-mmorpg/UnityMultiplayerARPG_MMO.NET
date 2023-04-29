@@ -10,5 +10,5 @@
 	url = https://github.com/insthync/LiteNetLibManager.git
 	branch = minimal
 [submodule "CentralServerSource"]
-	path = MMOSource
+	path = Src
 	url = https://github.com/insthync/UnityMultiplayerARPG_CentralServerSource.git
