@@ -9,6 +9,6 @@
 	path = LiteNetLibManager
 	url = https://github.com/insthync/LiteNetLibManager.git
 	branch = minimal
-[submodule "CentralServerSource"]
+[submodule "MMOSource"]
 	path = Src
-	url = https://github.com/insthync/UnityMultiplayerARPG_CentralServerSource.git
+	url = https://github.com/insthync/UnityMultiplayerARPG_MMOSource.git
