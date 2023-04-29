@@ -69,6 +69,77 @@ DatabaseNetworkManager databaseNetworkManager = new DatabaseNetworkManager();
 CentralNetworkManager centralNetworkManager = new CentralNetworkManager();
 MapSpawnNetworkManager mapSpawnNetworkManager = new MapSpawnNetworkManager();
 
+// Database option index
+bool useCustomDatabaseClient = false;
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_USE_CUSTOM_DATABASE_CLIENT, out useCustomDatabaseClient, false);
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.CONFIG_USE_CUSTOM_DATABASE_CLIENT))
+{
+    useCustomDatabaseClient = true;
+}
+serverConfig[ProcessArguments.CONFIG_USE_CUSTOM_DATABASE_CLIENT] = useCustomDatabaseClient;
+
+int dbOptionIndex;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out dbOptionIndex, 0) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_OPTION_INDEX, out dbOptionIndex, 0))
+{
+    if (!useCustomDatabaseClient)
+    {
+        switch (dbOptionIndex)
+        {
+            case 0:
+                databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                break;
+            case 1:
+                databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                break;
+        }
+    }
+}
+serverConfig[ProcessArguments.CONFIG_DATABASE_OPTION_INDEX] = dbOptionIndex;
+
+// Database disable cache reading or not?
+bool databaseDisableCacheReading = false;
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING, out databaseDisableCacheReading, false);
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_DATABASE_DISABLE_CACHE_READING))
+{
+    databaseDisableCacheReading = true;
+}
+serverConfig[ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING] = databaseDisableCacheReading;
+
+// Use Websocket or not?
+bool useWebSocket = false;
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_USE_WEB_SOCKET, out useWebSocket, false);
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_USE_WEB_SOCKET))
+{
+    useWebSocket = true;
+}
+serverConfig[ProcessArguments.CONFIG_USE_WEB_SOCKET] = useWebSocket;
+
+// Is websocket running in secure mode or not?
+bool webSocketSecure = false;
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_WEB_SOCKET_SECURE, out webSocketSecure, false);
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_WEB_SOCKET_SECURE))
+{
+    webSocketSecure = true;
+}
+serverConfig[ProcessArguments.CONFIG_WEB_SOCKET_SECURE] = webSocketSecure;
+
+// Where is the certification file path?
+string webSocketCertPath;
+if (!ConfigReader.ReadArgs(args, ProcessArguments.ARG_WEB_SOCKET_CERT_PATH, out webSocketCertPath, string.Empty))
+{
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_WEB_SOCKET_CERT_PATH, out webSocketCertPath, string.Empty);
+}
+serverConfig[ProcessArguments.CONFIG_WEB_SOCKET_CERT_PATH] = webSocketCertPath;
+
+// What is the certification password?
+string webSocketCertPassword;
+if (!ConfigReader.ReadArgs(args, ProcessArguments.ARG_WEB_SOCKET_CERT_PASSWORD, out webSocketCertPassword, string.Empty))
+{
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_WEB_SOCKET_CERT_PASSWORD, out webSocketCertPassword, string.Empty);
+}
+serverConfig[ProcessArguments.CONFIG_WEB_SOCKET_CERT_PASSWORD] = webSocketCertPassword;
+
 // Central network address
 string centralNetworkAddress;
 if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_CENTRAL_ADDRESS, out centralNetworkAddress, mapSpawnNetworkManager.clusterServerAddress) ||
@@ -131,6 +202,11 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_EXE_PATH, out spawnEx
 {
     mapSpawnNetworkManager.exePath = spawnExePath;
 }
+if (!File.Exists(spawnExePath))
+{
+    spawnExePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
+    mapSpawnNetworkManager.exePath = spawnExePath;
+}
 serverConfig[ProcessArguments.CONFIG_SPAWN_EXE_PATH] = spawnExePath;
 
 // Map spawn in batch mode
@@ -164,6 +240,28 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_MAPS, out spawnMapIds
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_MAPS] = spawnMapIds;
 
+if (!useCustomDatabaseClient)
+{
+    // Database network address
+    string databaseNetworkAddress;
+    if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_ADDRESS, out databaseNetworkAddress, databaseNetworkManager.networkAddress) ||
+        ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_ADDRESS, out databaseNetworkAddress, databaseNetworkManager.networkAddress))
+    {
+        databaseNetworkManager.networkAddress = databaseNetworkAddress;
+    }
+    serverConfig[ProcessArguments.CONFIG_DATABASE_ADDRESS] = databaseNetworkAddress;
+
+    // Database network port
+    int databaseNetworkPort;
+    if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_PORT, out databaseNetworkPort, databaseNetworkManager.networkPort) ||
+        ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_PORT, out databaseNetworkPort, databaseNetworkManager.networkPort))
+    {
+        if (!useCustomDatabaseClient)
+            databaseNetworkManager.networkPort = databaseNetworkPort;
+    }
+    serverConfig[ProcessArguments.CONFIG_DATABASE_PORT] = databaseNetworkPort;
+}
+
 if (!configFileFound)
 {
     // Write config file
@@ -173,23 +271,60 @@ if (!configFileFound)
     File.WriteAllText(configFilePath, JsonConvert.SerializeObject(serverConfig, Formatting.Indented));
 }
 
+// Read sever start args
+bool startingDatabaseServer = false;
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_START_DATABASE_SERVER))
+{
+    startingDatabaseServer = true;
+}
+bool startingCentralServer = false;
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_START_CENTRAL_SERVER))
+{
+    startingCentralServer = true;
+}
+bool startingMapSpawnServer = false;
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_START_MAP_SPAWN_SERVER))
+{
+    startingMapSpawnServer = true;
+}
+
 // Setup process
 const int targetFps = 60;
 using LogicLooper looper = new LogicLooper(targetFps);
 AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
 
+// Start database server
+if (startingDatabaseServer && !useCustomDatabaseClient)
+{
+    databaseNetworkManager.DisableCacheReading = databaseDisableCacheReading;
+    databaseNetworkManager.StartServer();
+}
+
 // Start central server
-centralNetworkManager.DbServiceClient = new RestDatabaseClient();
-centralNetworkManager.DataManager = new CentralServerDataManager();
-centralNetworkManager.StartServer();
+if (startingCentralServer)
+{
+    centralNetworkManager.useWebSocket = useWebSocket;
+    centralNetworkManager.webSocketSecure = webSocketSecure;
+    centralNetworkManager.webSocketCertificateFilePath = webSocketCertPath;
+    centralNetworkManager.webSocketCertificatePassword = webSocketCertPassword;
+    centralNetworkManager.DbServiceClient = new RestDatabaseClient();
+    centralNetworkManager.DataManager = new CentralServerDataManager();
+    centralNetworkManager.StartServer();
+}
 
 // Start map spawn server
-mapSpawnNetworkManager.spawningMapIds = spawningMapIds;
-mapSpawnNetworkManager.StartServer();
+if (startingMapSpawnServer)
+{
+    mapSpawnNetworkManager.spawningMapIds = spawningMapIds;
+    mapSpawnNetworkManager.StartServer();
+}
 
 // Register a action to the looper and wait for completion.
 await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
 {
+    if (databaseNetworkManager != null && databaseNetworkManager.IsServer)
+        databaseNetworkManager.ProcessUpdate();
+
     if (centralNetworkManager != null && centralNetworkManager.IsServer)
         centralNetworkManager.ProcessUpdate();
 
@@ -200,11 +335,14 @@ await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
     return true;
 });
 
-async void CurrentDomain_ProcessExit(object sender, EventArgs e)
+void CurrentDomain_ProcessExit(object sender, EventArgs e)
 {
     if (centralNetworkManager != null)
         centralNetworkManager.StopServer();
 
     if (mapSpawnNetworkManager != null)
         mapSpawnNetworkManager.StopServer();
+
+    if (databaseNetworkManager != null)
+        databaseNetworkManager.StopServer();
 }
