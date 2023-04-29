@@ -87,7 +87,7 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out 
         switch (dbOptionIndex)
         {
             case 0:
-                databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                databaseNetworkManager.Database = new SQLiteDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
                 break;
             case 1:
                 databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
@@ -256,8 +256,7 @@ if (!useCustomDatabaseClient)
     if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_PORT, out databaseNetworkPort, databaseNetworkManager.networkPort) ||
         ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_PORT, out databaseNetworkPort, databaseNetworkManager.networkPort))
     {
-        if (!useCustomDatabaseClient)
-            databaseNetworkManager.networkPort = databaseNetworkPort;
+        databaseNetworkManager.networkPort = databaseNetworkPort;
     }
     serverConfig[ProcessArguments.CONFIG_DATABASE_PORT] = databaseNetworkPort;
 }
@@ -294,9 +293,12 @@ using LogicLooper looper = new LogicLooper(targetFps);
 AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
 
 // Start database server
-if (startingDatabaseServer && !useCustomDatabaseClient)
+if (useCustomDatabaseClient)
+    startingDatabaseServer = false;
+if (startingDatabaseServer)
 {
     databaseNetworkManager.DisableCacheReading = databaseDisableCacheReading;
+    databaseNetworkManager.DatabaseCache = new LocalDatabaseCache();
     databaseNetworkManager.StartServer();
 }
 
@@ -307,8 +309,10 @@ if (startingCentralServer)
     centralNetworkManager.webSocketSecure = webSocketSecure;
     centralNetworkManager.webSocketCertificateFilePath = webSocketCertPath;
     centralNetworkManager.webSocketCertificatePassword = webSocketCertPassword;
-    centralNetworkManager.DbServiceClient = new RestDatabaseClient();
     centralNetworkManager.DataManager = new CentralServerDataManager();
+    centralNetworkManager.DbServiceClient = useCustomDatabaseClient ? new RestDatabaseClient() : databaseNetworkManager;
+    if (!useCustomDatabaseClient)
+        databaseNetworkManager.StartClient();
     centralNetworkManager.StartServer();
 }
 
@@ -338,11 +342,11 @@ await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
 void CurrentDomain_ProcessExit(object sender, EventArgs e)
 {
     if (centralNetworkManager != null)
-        centralNetworkManager.StopServer();
+        centralNetworkManager.StopHost();
 
     if (mapSpawnNetworkManager != null)
-        mapSpawnNetworkManager.StopServer();
+        mapSpawnNetworkManager.StopHost();
 
     if (databaseNetworkManager != null)
-        databaseNetworkManager.StopServer();
+        databaseNetworkManager.StopHost();
 }
