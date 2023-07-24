@@ -10,7 +10,10 @@ string configFilePath;
 
 bool configFileFound = false;
 Dictionary<string, object> serverConfig = new Dictionary<string, object>();
-List<string> spawningMapIds = new List<string>();
+
+List<string> spawningMapByNames = new List<string>();
+List<SpawnAllocateMapByNameData> spawningAllocateMaps = new List<SpawnAllocateMapByNameData>();
+
 configFilePath = configFolder + "/serverConfig.json";
 if (File.Exists(configFilePath))
 {
@@ -167,6 +170,32 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_CENTRAL_MAX_CONNECTIONS, ou
 }
 serverConfig[ProcessArguments.CONFIG_CENTRAL_MAX_CONNECTIONS] = centralMaxConnections;
 
+// Central map spawn timeout (milliseconds)
+int mapSpawnMillisecondsTimeout;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_MAP_SPAWN_MILLISECONDS_TIMEOUT, out mapSpawnMillisecondsTimeout, centralNetworkManager.mapSpawnMillisecondsTimeout) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_MAP_SPAWN_MILLISECONDS_TIMEOUT, out mapSpawnMillisecondsTimeout, centralNetworkManager.mapSpawnMillisecondsTimeout))
+{
+    centralNetworkManager.mapSpawnMillisecondsTimeout = mapSpawnMillisecondsTimeout;
+}
+serverConfig[ProcessArguments.CONFIG_MAP_SPAWN_MILLISECONDS_TIMEOUT] = mapSpawnMillisecondsTimeout;
+
+// Central - default channels max connections
+int defaultChannelMaxConnections;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DEFAULT_CHANNEL_MAX_CONNECTIONS, out defaultChannelMaxConnections, centralNetworkManager.defaultChannelMaxConnections) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DEFAULT_CHANNEL_MAX_CONNECTIONS, out defaultChannelMaxConnections, centralNetworkManager.defaultChannelMaxConnections))
+{
+    centralNetworkManager.defaultChannelMaxConnections = defaultChannelMaxConnections;
+}
+serverConfig[ProcessArguments.CONFIG_DEFAULT_CHANNEL_MAX_CONNECTIONS] = defaultChannelMaxConnections;
+
+// Central - channels
+List<ChannelData> channels;
+if (ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_CHANNELS, out channels, centralNetworkManager.channels))
+{
+    centralNetworkManager.channels = channels;
+}
+serverConfig[ProcessArguments.CONFIG_CHANNELS] = channels;
+
 // Central network port
 int clusterNetworkPort;
 if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_CLUSTER_PORT, out clusterNetworkPort, centralNetworkManager.clusterServerPort) ||
@@ -230,15 +259,33 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_START_PORT, out spawn
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_START_PORT] = spawnStartPort;
 
+// Spawn channels
+List<string> spawnChannels;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_CHANNELS, out spawnChannels, mapSpawnNetworkManager.spawningChannelIds) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_SPAWN_CHANNELS, out spawnChannels, mapSpawnNetworkManager.spawningChannelIds))
+{
+    mapSpawnNetworkManager.spawningChannelIds = spawnChannels;
+}
+serverConfig[ProcessArguments.CONFIG_SPAWN_CHANNELS] = spawnChannels;
+
 // Spawn maps
 List<string> defaultSpawnMapIds = new List<string>();
 List<string> spawnMapIds;
 if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_MAPS, out spawnMapIds, defaultSpawnMapIds) ||
     ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_SPAWN_MAPS, out spawnMapIds, defaultSpawnMapIds))
 {
-    spawningMapIds = spawnMapIds;
+    spawningMapByNames = spawnMapIds;
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_MAPS] = spawnMapIds;
+
+// Spawn allocate maps
+List<SpawnAllocateMapByNameData> defaultSpawnAllocateMaps = new List<SpawnAllocateMapByNameData>();
+List<SpawnAllocateMapByNameData> spawnAllocateMaps;
+if (ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_SPAWN_ALLOCATE_MAPS, out spawnAllocateMaps, defaultSpawnAllocateMaps))
+{
+    spawningAllocateMaps = spawnAllocateMaps;
+}
+serverConfig[ProcessArguments.CONFIG_SPAWN_ALLOCATE_MAPS] = spawnAllocateMaps;
 
 if (!useCustomDatabaseClient)
 {
@@ -319,7 +366,8 @@ if (startingCentralServer)
 // Start map spawn server
 if (startingMapSpawnServer)
 {
-    mapSpawnNetworkManager.spawningMapIds = spawningMapIds;
+    mapSpawnNetworkManager.spawningMapByNames = spawningMapByNames;
+    mapSpawnNetworkManager.spawningAllocateMapByNames = spawningAllocateMaps;
     mapSpawnNetworkManager.StartServer();
 }
 
