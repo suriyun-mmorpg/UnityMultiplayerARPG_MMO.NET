@@ -101,13 +101,21 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out 
 serverConfig[ProcessArguments.CONFIG_DATABASE_OPTION_INDEX] = dbOptionIndex;
 
 // Database disable cache reading or not?
-bool databaseDisableCacheReading = false;
-ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING, out databaseDisableCacheReading, false);
+bool disableDatabaseCaching = false;
+#pragma warning disable CS0618 // Type or member is obsolete
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING, out disableDatabaseCaching, false);
 if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_DATABASE_DISABLE_CACHE_READING))
 {
-    databaseDisableCacheReading = true;
+    disableDatabaseCaching = true;
 }
-serverConfig[ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING] = databaseDisableCacheReading;
+serverConfig[ProcessArguments.CONFIG_DATABASE_DISABLE_CACHE_READING] = disableDatabaseCaching;
+#pragma warning restore CS0618 // Type or member is obsolete
+ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DISABLE_DATABASE_CACHING, out disableDatabaseCaching, false);
+if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_DISABLE_DATABASE_CACHING))
+{
+    disableDatabaseCaching = true;
+}
+serverConfig[ProcessArguments.CONFIG_DISABLE_DATABASE_CACHING] = disableDatabaseCaching;
 
 // Use Websocket or not?
 bool useWebSocket = false;
@@ -344,7 +352,7 @@ if (useCustomDatabaseClient)
     startingDatabaseServer = false;
 if (startingDatabaseServer)
 {
-    databaseNetworkManager.DisableCacheReading = databaseDisableCacheReading;
+    databaseNetworkManager.DisableDatabaseCaching = disableDatabaseCaching;
     databaseNetworkManager.DatabaseCache = new LocalDatabaseCache();
     databaseNetworkManager.StartServer();
 }
