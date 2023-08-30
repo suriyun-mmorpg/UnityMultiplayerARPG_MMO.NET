@@ -1,7 +1,3 @@
-[submodule "SharedData"]
-	path = SharedData
-	url = https://github.com/insthync/UnityMultiplayerARPG_SharedData.git
-	branch = litenetlib
 [submodule "DevExtension"]
 	path = DevExtension
 	url = https://github.com/insthync/unity-dev-extension.git
@@ -9,6 +5,10 @@
 	path = LiteNetLibManager
 	url = https://github.com/insthync/LiteNetLibManager.git
 	branch = minimal
+[submodule "SharedData"]
+	path = SharedData
+	url = ../UnityMultiplayerARPG_SharedData.git
+	branch = litenetlib
 [submodule "MMOSource"]
 	path = Src
-	url = https://github.com/insthync/UnityMultiplayerARPG_MMOSource.git
+	url = ../UnityMultiplayerARPG_MMOSource.git
