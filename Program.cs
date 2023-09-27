@@ -365,7 +365,7 @@ if (startingCentralServer)
     centralNetworkManager.webSocketCertificateFilePath = webSocketCertPath;
     centralNetworkManager.webSocketCertificatePassword = webSocketCertPassword;
     centralNetworkManager.DataManager = new CentralServerDataManager();
-    centralNetworkManager.DbServiceClient = useCustomDatabaseClient ? new RestDatabaseClient() : databaseNetworkManager;
+    centralNetworkManager.DatabaseClient = useCustomDatabaseClient ? new RestDatabaseClient() : databaseNetworkManager;
     if (!useCustomDatabaseClient)
         databaseNetworkManager.StartClient();
     centralNetworkManager.StartServer();

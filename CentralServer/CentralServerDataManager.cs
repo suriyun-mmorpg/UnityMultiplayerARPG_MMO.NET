@@ -12,8 +12,9 @@
             return GenericUtils.GetUniqueId();
         }
 
-        public bool CanCreateCharacter(int dataId, int entityId, int factionId, IList<CharacterDataBoolean> publicBools, IList<CharacterDataInt32> publicInts, IList<CharacterDataFloat32> publicFloats)
+        public bool CanCreateCharacter(ref int dataId, ref int entityId, ref int factionId, IList<CharacterDataBoolean> publicBools, IList<CharacterDataInt32> publicInts, IList<CharacterDataFloat32> publicFloats, out UITextKeys errorMessage)
         {
+            errorMessage = UITextKeys.NONE;
             return DataManager.CharacterCreationData.CanCreateCharacter(dataId, entityId, factionId, publicBools, publicInts, publicFloats);
         }
 
