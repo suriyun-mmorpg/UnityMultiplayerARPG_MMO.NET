@@ -1,6 +1,7 @@
 [submodule "DevExtension"]
 	path = DevExtension
 	url = https://github.com/insthync/unity-dev-extension.git
+	branch = master
 [submodule "LiteNetLibManager"]
 	path = LiteNetLibManager
 	url = https://github.com/insthync/LiteNetLibManager.git
@@ -12,3 +13,4 @@
 [submodule "MMOSource"]
 	path = Src
 	url = ../UnityMultiplayerARPG_MMOSource.git
+	branch = main
