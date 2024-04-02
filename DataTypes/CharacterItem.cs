@@ -37,7 +37,7 @@
 
         public bool IsEmptySlot()
         {
-            return IsEmpty() || GetItem() == null || amount <= 0;
+            return IsEmpty() || dataId == 0 || amount <= 0;
         }
 
         public bool NotEmptySlot()
