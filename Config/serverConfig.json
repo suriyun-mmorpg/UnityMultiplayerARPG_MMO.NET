@@ -1,5 +1,5 @@
 {
-  "databaseOptionIndex": 1,
+  "databaseOptionIndex": 2,
   "databaseDisableCacheReading": false,
   "useWebSocket": false,
   "webSocketSecure": false,
@@ -11,7 +11,7 @@
   "clusterPort": 6010,
   "machineAddress": "127.0.0.1",
   "mapSpawnPort": 6001,
-  "spawnExePath": "D:/Projects/UnityBuild/MMORPG_KIT/UnityMultiplayerARPG.exe",
+  "spawnExePath": "C:/Unity Projects/Build/MMORPG_KIT/UnityMultiplayerARPG.exe",
   "notSpawnInBatchMode": false,
   "spawnStartPort": 8000,
   "spawnMaps": [ "Map001", "Map002", "Map_GuildWar" ],
