@@ -1,0 +1,8 @@
+{
+  "pgAddress": "127.0.0.1",
+  "pgPort": 5432,
+  "pgUsername": "postgre",
+  "pgPassword": "localdb",
+  "pgDbName": "mmorpg_kit",
+  "pgConnectionString": ""
+}
