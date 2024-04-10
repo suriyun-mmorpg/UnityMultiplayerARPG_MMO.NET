@@ -1,7 +1,82 @@
 {
-  "798029291": {
-    "Id": "TwoHandSword001",
-    "DataId": 798029291,
+  "799305512": {
+    "Id": "Armor001",
+    "DataId": 799305512,
+    "ItemType": 1,
+    "SellPrice": 100,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-1929577843": {
+    "Id": "Armor002",
+    "DataId": -1929577843,
+    "ItemType": 1,
+    "SellPrice": 100,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 7,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "2000749543": {
+    "Id": "ArrowAmmo",
+    "DataId": 2000749543,
+    "ItemType": 5,
+    "SellPrice": 5,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-1089917143": {
+    "Id": "AttributeReset",
+    "DataId": -1089917143,
+    "ItemType": 4,
+    "SellPrice": 0,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1193423154": {
+    "Id": "Axe",
+    "DataId": 1193423154,
+    "ItemType": 2,
+    "SellPrice": 50,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": true,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-57701097": {
+    "Id": "Bow001",
+    "DataId": -57701097,
     "ItemType": 2,
     "SellPrice": 75,
     "Weight": 1.0,
@@ -23,7 +98,131 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-1914499826": {
+    "Id": "Building_Campfire",
+    "DataId": -1914499826,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-871205235": {
+    "Id": "Meat",
+    "DataId": -871205235,
+    "ItemType": 4,
+    "SellPrice": 10,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "919681356": {
+    "Id": "GrilledMeat",
+    "DataId": 919681356,
+    "ItemType": 4,
+    "SellPrice": 10,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-1393217408": {
+    "Id": "Building_Chest",
+    "DataId": -1393217408,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1992125251": {
+    "Id": "Building_Door",
+    "DataId": 1992125251,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-769796447": {
+    "Id": "Building_DoorInteract",
+    "DataId": -769796447,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "86378066": {
+    "Id": "Building_Foundation",
+    "DataId": 86378066,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-1691894361": {
+    "Id": "Building_QueuedWorkbench",
+    "DataId": -1691894361,
+    "ItemType": 6,
+    "SellPrice": 100,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1366050363": {
     "Id": "Material_Stone",
@@ -34,96 +233,15 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "799305512": {
-    "Id": "Armor001",
-    "DataId": 799305512,
-    "ItemType": 1,
-    "SellPrice": 100,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
     "ExpireDuration": 0,
-    "MaxDurability": 100.0,
+    "MaxDurability": 0.0,
     "DestroyIfBroken": false,
-    "MaxSocket": 0
-  },
-  "1664576209": {
-    "Id": "Head001",
-    "DataId": 1664576209,
-    "ItemType": 1,
-    "SellPrice": 100,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 0
-  },
-  "1166725301": {
-    "Id": "Gloves001",
-    "DataId": 1166725301,
-    "ItemType": 1,
-    "SellPrice": 100,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 0
-  },
-  "1335573127": {
-    "Id": "Shoes001",
-    "DataId": 1335573127,
-    "ItemType": 1,
-    "SellPrice": 100,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 0
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "832666479": {
     "Id": "Staff001",
     "DataId": 832666479,
-    "ItemType": 2,
-    "SellPrice": 75,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 2,
-    "AmmoCapacity": 0
-  },
-  "-467663074": {
-    "Id": "Shield001",
-    "DataId": -467663074,
-    "ItemType": 3,
-    "SellPrice": 50,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 10,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 0
-  },
-  "-57701097": {
-    "Id": "Bow001",
-    "DataId": -57701097,
     "ItemType": 2,
     "SellPrice": 75,
     "Weight": 1.0,
@@ -151,177 +269,20 @@
     "MaxSocket": 2,
     "AmmoCapacity": 0
   },
-  "1817784343": {
-    "Id": "HpPotion",
-    "DataId": 1817784343,
-    "ItemType": 4,
-    "SellPrice": 20,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "1817469684": {
-    "Id": "MpPotion",
-    "DataId": 1817469684,
-    "ItemType": 4,
-    "SellPrice": 20,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "2000749543": {
-    "Id": "ArrowAmmo",
-    "DataId": 2000749543,
-    "ItemType": 5,
-    "SellPrice": 5,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "-871205235": {
-    "Id": "Meat",
-    "DataId": -871205235,
-    "ItemType": 4,
-    "SellPrice": 10,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "694639153": {
-    "Id": "WaterBottle",
-    "DataId": 694639153,
-    "ItemType": 4,
-    "SellPrice": 10,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "-1929577843": {
-    "Id": "Armor002",
-    "DataId": -1929577843,
-    "ItemType": 1,
-    "SellPrice": 100,
+  "798029291": {
+    "Id": "TwoHandSword001",
+    "DataId": 798029291,
+    "ItemType": 2,
+    "SellPrice": 75,
     "Weight": 1.0,
     "MaxStack": 1,
     "MaxLevel": 10,
     "LockDuration": 0.0,
-    "ExpireDuration": 7,
-    "MaxDurability": 100.0,
-    "DestroyIfBroken": false,
-    "MaxSocket": 0
-  },
-  "-1089917143": {
-    "Id": "AttributeReset",
-    "DataId": -1089917143,
-    "ItemType": 4,
-    "SellPrice": 0,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "1193423154": {
-    "Id": "Axe",
-    "DataId": 1193423154,
-    "ItemType": 2,
-    "SellPrice": 50,
-    "Weight": 1.0,
-    "MaxStack": 1,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
     "ExpireDuration": 0,
     "MaxDurability": 100.0,
-    "DestroyIfBroken": true,
-    "MaxSocket": 0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 2,
     "AmmoCapacity": 0
-  },
-  "-1914499826": {
-    "Id": "Building_Campfire",
-    "DataId": -1914499826,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "919681356": {
-    "Id": "GrilledMeat",
-    "DataId": 919681356,
-    "ItemType": 4,
-    "SellPrice": 10,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "-1393217408": {
-    "Id": "Building_Chest",
-    "DataId": -1393217408,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "1992125251": {
-    "Id": "Building_Door",
-    "DataId": 1992125251,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "-769796447": {
-    "Id": "Building_DoorInteract",
-    "DataId": -769796447,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "86378066": {
-    "Id": "Building_Foundation",
-    "DataId": 86378066,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
-  },
-  "-1691894361": {
-    "Id": "Building_QueuedWorkbench",
-    "DataId": -1691894361,
-    "ItemType": 6,
-    "SellPrice": 100,
-    "Weight": 0.0,
-    "MaxStack": 99,
-    "MaxLevel": 1,
-    "LockDuration": 0.0,
-    "ExpireDuration": 0
   },
   "-1691396125": {
     "Id": "Building_Wall",
@@ -332,7 +293,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "36528760": {
     "Id": "Building_Workbench",
@@ -343,7 +308,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "886031395": {
     "Id": "FireBoltGuide",
@@ -354,7 +323,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1720362124": {
     "Id": "FireBoltScroll",
@@ -365,7 +338,26 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1166725301": {
+    "Id": "Gloves001",
+    "DataId": 1166725301,
+    "ItemType": 1,
+    "SellPrice": 100,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1166725302": {
     "Id": "Gloves002",
@@ -379,7 +371,8 @@
     "ExpireDuration": 7,
     "MaxDurability": 100.0,
     "DestroyIfBroken": false,
-    "MaxSocket": 0
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-2092367233": {
     "Id": "Grenade001",
@@ -396,6 +389,21 @@
     "MaxSocket": 0,
     "AmmoCapacity": 0
   },
+  "1664576209": {
+    "Id": "Head001",
+    "DataId": 1664576209,
+    "ItemType": 1,
+    "SellPrice": 100,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
   "1664576210": {
     "Id": "Head002",
     "DataId": 1664576210,
@@ -408,7 +416,23 @@
     "ExpireDuration": 7,
     "MaxDurability": 100.0,
     "DestroyIfBroken": false,
-    "MaxSocket": 0
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1817784343": {
+    "Id": "HpPotion",
+    "DataId": 1817784343,
+    "ItemType": 4,
+    "SellPrice": 20,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-868259683": {
     "Id": "IncreaseDex",
@@ -419,7 +443,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-108745149": {
     "Id": "IncreaseInt",
@@ -430,7 +458,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1410284325": {
     "Id": "IncreaseStr",
@@ -441,7 +473,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1457338591": {
     "Id": "IncreaseVit",
@@ -452,7 +488,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-1511677990": {
     "Id": "MachineGun001",
@@ -478,7 +518,11 @@
     "MaxStack": 999,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1408236594": {
     "Id": "Mount001",
@@ -489,7 +533,26 @@
     "MaxStack": 1,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1817469684": {
+    "Id": "MpPotion",
+    "DataId": 1817469684,
+    "ItemType": 4,
+    "SellPrice": 20,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1503646888": {
     "Id": "PetOrcArcher",
@@ -500,7 +563,56 @@
     "MaxStack": 1,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "1335573127": {
+    "Id": "Shoes001",
+    "DataId": 1335573127,
+    "ItemType": 1,
+    "SellPrice": 100,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-467663074": {
+    "Id": "Shield001",
+    "DataId": -467663074,
+    "ItemType": 3,
+    "SellPrice": 50,
+    "Weight": 1.0,
+    "MaxStack": 1,
+    "MaxLevel": 10,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 100.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "694639153": {
+    "Id": "WaterBottle",
+    "DataId": 694639153,
+    "ItemType": 4,
+    "SellPrice": 10,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1299461821": {
     "Id": "PetOrcWarrior",
@@ -511,7 +623,11 @@
     "MaxStack": 1,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "1091988412": {
     "Id": "Pistol001",
@@ -537,7 +653,26 @@
     "MaxStack": 999,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
+  },
+  "-933374377": {
+    "Id": "Resurrection",
+    "DataId": -933374377,
+    "ItemType": 10,
+    "SellPrice": 0,
+    "Weight": 0.0,
+    "MaxStack": 99,
+    "MaxLevel": 1,
+    "LockDuration": 0.0,
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-1825079297": {
     "Id": "Ring001",
@@ -551,7 +686,8 @@
     "ExpireDuration": 0,
     "MaxDurability": 100.0,
     "DestroyIfBroken": false,
-    "MaxSocket": 0
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-1393310228": {
     "Id": "Shoes002",
@@ -565,7 +701,8 @@
     "ExpireDuration": 7,
     "MaxDurability": 100.0,
     "DestroyIfBroken": false,
-    "MaxSocket": 0
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-1153630586": {
     "Id": "SkillReset",
@@ -576,7 +713,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "374307064": {
     "Id": "Sniper001",
@@ -602,7 +743,11 @@
     "MaxStack": 999,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-700288898": {
     "Id": "SocketEnhancer001",
@@ -613,7 +758,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-700288901": {
     "Id": "SocketEnhancer002",
@@ -624,7 +773,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-700288900": {
     "Id": "SocketEnhancer003",
@@ -635,7 +788,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "-700288903": {
     "Id": "SocketEnhancer004",
@@ -646,7 +803,11 @@
     "MaxStack": 99,
     "MaxLevel": 1,
     "LockDuration": 0.0,
-    "ExpireDuration": 0
+    "ExpireDuration": 0,
+    "MaxDurability": 0.0,
+    "DestroyIfBroken": false,
+    "MaxSocket": 0,
+    "AmmoCapacity": 0
   },
   "2130087450": {
     "Id": "StonePick",
