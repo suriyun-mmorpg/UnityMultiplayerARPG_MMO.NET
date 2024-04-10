@@ -95,6 +95,9 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out 
             case 1:
                 databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
                 break;
+            case 2:
+                databaseNetworkManager.Database = new PostgreSQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                break;
         }
     }
 }
