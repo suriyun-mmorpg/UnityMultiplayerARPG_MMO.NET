@@ -345,11 +345,6 @@ if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_START_MAP_SPAWN_SERVE
     startingMapSpawnServer = true;
 }
 
-// Setup process
-const int targetFps = 60;
-using LogicLooper looper = new LogicLooper(targetFps);
-AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
-
 // Start database server
 if (useCustomDatabaseClient)
     startingDatabaseServer = false;
@@ -382,8 +377,10 @@ if (startingMapSpawnServer)
     mapSpawnNetworkManager.StartServer();
 }
 
-// Register a action to the looper and wait for completion.
-await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
+// Setup process
+AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+int delay = 1000 / 60;
+while (true)
 {
     if (databaseNetworkManager != null && databaseNetworkManager.IsServer)
         databaseNetworkManager.ProcessUpdate();
@@ -394,9 +391,9 @@ await looper.RegisterActionAsync((in LogicLooperActionContext ctx) =>
     if (mapSpawnNetworkManager != null && mapSpawnNetworkManager.IsServer)
         mapSpawnNetworkManager.ProcessUpdate();
 
-    // Return false to stop the loop
-    return true;
-});
+    // wait for next frame
+    await Task.Delay(delay);
+}
 
 void CurrentDomain_ProcessExit(object sender, EventArgs e)
 {
