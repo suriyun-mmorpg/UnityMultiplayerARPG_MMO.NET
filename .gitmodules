@@ -14,3 +14,7 @@
 	path = Src
 	url = ../UnityMultiplayerARPG_MMOSource.git
 	branch = main
+[submodule "RestClient"]
+	path = RestClient
+	url = https://github.com/insthync/dotnet-rest-client.git
+	branch = main
