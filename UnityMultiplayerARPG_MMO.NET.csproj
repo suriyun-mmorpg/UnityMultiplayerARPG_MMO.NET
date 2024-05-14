@@ -15,7 +15,7 @@
     <PackageReference Include="MySqlConnector" Version="2.3.7" />
     <PackageReference Include="NetCoreServer" Version="8.0.7" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Npgsql" Version="8.0.2" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
     <PackageReference Include="UniTask" Version="2.5.4" />
     <PackageReference Include="ZLogger" Version="1.7.1" />
     <PackageReference Include="ZString" Version="2.6.0" />
