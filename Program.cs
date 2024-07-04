@@ -350,8 +350,7 @@ if (useCustomDatabaseClient)
     startingDatabaseServer = false;
 if (startingDatabaseServer)
 {
-    databaseNetworkManager.DisableDatabaseCaching = disableDatabaseCaching;
-    databaseNetworkManager.DatabaseCache = new LocalDatabaseCache();
+    databaseNetworkManager.DatabaseCache = disableDatabaseCaching ? new DisabledDatabaseCache() : new LocalDatabaseCache();
     databaseNetworkManager.StartServer();
 }
 
