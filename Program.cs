@@ -218,13 +218,13 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_CLUSTER_PORT, out clusterNe
 serverConfig[ProcessArguments.CONFIG_CLUSTER_PORT] = clusterNetworkPort;
 
 // Machine network address, will be set to map spawn / map / chat
-string machineNetworkAddress;
-if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_MACHINE_ADDRESS, out machineNetworkAddress, mapSpawnNetworkManager.machineAddress) ||
-    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_MACHINE_ADDRESS, out machineNetworkAddress, mapSpawnNetworkManager.machineAddress))
+string publicNetworkAddress;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_PUBLIC_ADDRESS, out publicNetworkAddress, mapSpawnNetworkManager.publicAddress) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_PUBLIC_ADDRESS, out publicNetworkAddress, mapSpawnNetworkManager.publicAddress))
 {
-    mapSpawnNetworkManager.machineAddress = machineNetworkAddress;
+    mapSpawnNetworkManager.publicAddress = publicNetworkAddress;
 }
-serverConfig[ProcessArguments.CONFIG_MACHINE_ADDRESS] = machineNetworkAddress;
+serverConfig[ProcessArguments.CONFIG_PUBLIC_ADDRESS] = publicNetworkAddress;
 
 // Map spawn network port
 int mapSpawnNetworkPort;
@@ -237,15 +237,15 @@ serverConfig[ProcessArguments.CONFIG_MAP_SPAWN_PORT] = mapSpawnNetworkPort;
 
 // Map spawn exe path
 string spawnExePath;
-if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_EXE_PATH, out spawnExePath, mapSpawnNetworkManager.exePath) ||
-    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_SPAWN_EXE_PATH, out spawnExePath, mapSpawnNetworkManager.exePath))
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_SPAWN_EXE_PATH, out spawnExePath, mapSpawnNetworkManager.spawnExePath) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_SPAWN_EXE_PATH, out spawnExePath, mapSpawnNetworkManager.spawnExePath))
 {
-    mapSpawnNetworkManager.exePath = spawnExePath;
+    mapSpawnNetworkManager.spawnExePath = spawnExePath;
 }
 if (!File.Exists(spawnExePath))
 {
     spawnExePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-    mapSpawnNetworkManager.exePath = spawnExePath;
+    mapSpawnNetworkManager.spawnExePath = spawnExePath;
 }
 serverConfig[ProcessArguments.CONFIG_SPAWN_EXE_PATH] = spawnExePath;
 
