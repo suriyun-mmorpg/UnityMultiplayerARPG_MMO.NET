@@ -101,6 +101,7 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out 
         }
         if (databaseNetworkManager.Database != null)
         {
+            // TODO: Setup by files/environment settings
             databaseNetworkManager.Database.UserLoginManager = new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()
             {
                 PasswordSaltPrefix = string.Empty,
