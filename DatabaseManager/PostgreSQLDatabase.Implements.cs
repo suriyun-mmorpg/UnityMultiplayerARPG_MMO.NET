@@ -2,7 +2,7 @@
 {
     public partial class PostgreSQLDatabase
     {
-        public PostgreSQLDatabase(IDatabaseUserLogin userLoginManager) : base(userLoginManager)
+        public PostgreSQLDatabase() : base()
         {
         }
     }

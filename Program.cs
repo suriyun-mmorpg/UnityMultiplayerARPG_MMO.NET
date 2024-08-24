@@ -90,14 +90,22 @@ if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_OPTION_INDEX, out 
         switch (dbOptionIndex)
         {
             case 0:
-                databaseNetworkManager.Database = new SQLiteDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                databaseNetworkManager.Database = new SQLiteDatabase();
                 break;
             case 1:
-                databaseNetworkManager.Database = new MySQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                databaseNetworkManager.Database = new MySQLDatabase();
                 break;
             case 2:
-                databaseNetworkManager.Database = new PostgreSQLDatabase(new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()));
+                databaseNetworkManager.Database = new PostgreSQLDatabase();
                 break;
+        }
+        if (databaseNetworkManager.Database != null)
+        {
+            databaseNetworkManager.Database.UserLoginManager = new DefaultDatabaseUserLogin(new DefaultDatabaseUserLoginConfig()
+            {
+                PasswordSaltPrefix = string.Empty,
+                PasswordSaltPostfix = string.Empty,
+            });
         }
     }
 }
@@ -361,7 +369,7 @@ if (startingCentralServer)
     centralNetworkManager.webSocketSecure = webSocketSecure;
     centralNetworkManager.webSocketCertificateFilePath = webSocketCertPath;
     centralNetworkManager.webSocketCertificatePassword = webSocketCertPassword;
-    centralNetworkManager.DataManager = new CentralServerDataManager();
+    centralNetworkManager.DataManager = new DefaultCentralServerDataManager();
     centralNetworkManager.DatabaseClient = useCustomDatabaseClient ? new RestDatabaseClient() : databaseNetworkManager;
     if (!useCustomDatabaseClient)
         databaseNetworkManager.StartClient();

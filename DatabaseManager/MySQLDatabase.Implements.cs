@@ -2,7 +2,7 @@
 {
     public partial class MySQLDatabase
     {
-        public MySQLDatabase(IDatabaseUserLogin userLoginManager) : base(userLoginManager)
+        public MySQLDatabase() : base()
         {
         }
     }

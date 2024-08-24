@@ -4,9 +4,8 @@ namespace MultiplayerARPG.MMO
 {
     public partial class BaseDatabase
     {
-        public BaseDatabase(IDatabaseUserLogin userLoginManager)
+        public BaseDatabase()
         {
-            _userLoginManager = userLoginManager;
             Initialize();
         }
 
