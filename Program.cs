@@ -1,8 +1,16 @@
 ﻿using Cysharp.Threading;
 using LiteNetLibManager;
+using Microsoft.Extensions.Logging;
 using MultiplayerARPG;
 using MultiplayerARPG.MMO;
 using Newtonsoft.Json;
+
+using var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder
+        .AddConsole() // log to console
+        .SetMinimumLevel(LogLevel.Information);
+});
 
 // Read config files
 string configFolder = "./Config";
@@ -128,6 +136,30 @@ if (ConfigReader.IsArgsProvided(args, ProcessArguments.ARG_DISABLE_DATABASE_CACH
     disableDatabaseCaching = true;
 }
 serverConfig[ProcessArguments.CONFIG_DISABLE_DATABASE_CACHING] = disableDatabaseCaching;
+
+// Which cache?
+int dbCacheOptionIndex;
+if (ConfigReader.ReadArgs(args, ProcessArguments.ARG_DATABASE_CACHE_OPTION_INDEX, out dbCacheOptionIndex, 0) ||
+    ConfigReader.ReadConfigs(serverConfig, ProcessArguments.CONFIG_DATABASE_CACHE_OPTION_INDEX, out dbCacheOptionIndex, 0))
+{
+    if (!disableDatabaseCaching)
+    {
+        switch (dbCacheOptionIndex)
+        {
+            case 0:
+                databaseNetworkManager.DatabaseCache = new LocalDatabaseCache();
+                break;
+            case 1:
+                databaseNetworkManager.DatabaseCache = new RedisDatabaseCache(loggerFactory.CreateLogger<RedisDatabaseCache>());
+                break;
+        }
+    }
+    else
+    {
+        databaseNetworkManager.DatabaseCache = new DisabledDatabaseCache();
+    }
+}
+serverConfig[ProcessArguments.CONFIG_DATABASE_CACHE_OPTION_INDEX] = dbCacheOptionIndex;
 
 // Use Websocket or not?
 bool useWebSocket = false;
@@ -359,7 +391,6 @@ if (useCustomDatabaseClient)
     startingDatabaseServer = false;
 if (startingDatabaseServer)
 {
-    databaseNetworkManager.DatabaseCache = disableDatabaseCaching ? new DisabledDatabaseCache() : new LocalDatabaseCache();
     databaseNetworkManager.StartServer();
 }
 
